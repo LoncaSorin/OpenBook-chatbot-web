@@ -38,10 +38,10 @@ export default function ChatContainer() {
       <StyledChatWrapper>
         <StyledChatContentWrapper className="hidden-scroll">
           {mockMessages?.length && mockMessages.map((message) => (
-            <>
-              <MessageComponent message={message?.question} key={`question-${message?._id}`} />
-              <MessageComponent message={message?.answer} key={`answer-${message?._id}`} mode="secondary" />
-            </>
+            <Box key={message?._id}>
+              <MessageComponent message={message?.question} />
+              <MessageComponent message={message?.answer} mode="secondary" />
+            </Box>
           ))}
         </StyledChatContentWrapper>
 
