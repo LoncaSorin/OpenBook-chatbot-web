@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["app/components/*"],
+      "containers/*": ["app/containers/*"],
+      "fields/*": ["app/fields/*"],
+      "layouts/*": ["app/layouts/*"],
+      "services/*": ["app/services/*"],
+      "constants/*": ["app/constants/*"],
+      "utils/*": ["app/utils/*"]
+    }
+  }
+}
