@@ -132,9 +132,7 @@ export default function ChatContainer() {
               </Box>
             );
           })}
-          {isQuestionLoading && (
-            <LoadingMessageComponent />
-          )}
+          {isQuestionLoading && <LoadingMessageComponent />}
         </StyledChatContentWrapper>
 
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1} width="100%">
