@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Box,
   Button, DialogActions, DialogContent, DialogTitle, TextField, Tooltip, Typography,
 } from '@mui/material';
 
 import { StyledDialog } from './index.styled';
+import { HOME_ROUTE } from '../../constants/clientRoutes';
 import { createArtefact } from '../../services/ArtefactService';
 
 export default function ArtefactDialogContainer() {
-  const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const searchArtefactId = searchParams?.get('artefactId');
+
+  const [open, setOpen] = useState(false);
   const [artefactId, setArtefactId] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    setOpen(!searchArtefactId);
+  }, [searchArtefactId]);
 
   useEffect(() => {
     setIsDisabled(!artefactId);
@@ -23,6 +33,7 @@ export default function ArtefactDialogContainer() {
 
   const handleChange = (event) => {
     setArtefactId(event.target.value);
+    setErrorMessage('');
   };
 
   const handleSubmit = async () => {
@@ -30,6 +41,7 @@ export default function ArtefactDialogContainer() {
       await createArtefact({ artefactId });
 
       handleClose();
+      navigate({ pathname: HOME_ROUTE, search: `?artefactId=${artefactId}` });
     } catch (e) {
       setErrorMessage(e?.message || 'Something went wrong. Please try again later.');
     }

@@ -1,5 +1,4 @@
 import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
 
 export const StyledMessageWrapper = styled('div')(({ theme, mode, hasError }) => {
   let backgroundColor = mode === 'primary' ? theme.palette.secondary.main : theme.palette.primary.secondary;
@@ -14,8 +13,8 @@ export const StyledMessageWrapper = styled('div')(({ theme, mode, hasError }) =>
     maxWidth: '350px',
     padding: theme.spacing(2),
     borderRadius: '16px',
-    borderBottomRightRadius: mode === 'primary' ? '0px' : '8px',
-    borderBottomLeftRadius: mode !== 'primary' ? '0px' : '8px',
+    borderBottomRightRadius: mode === 'primary' ? '0px' : '16px',
+    borderBottomLeftRadius: mode !== 'primary' ? '0px' : '16px',
     position: 'relative',
     backgroundColor,
     color,
@@ -30,8 +29,8 @@ export const StyledMessageWrapper = styled('div')(({ theme, mode, hasError }) =>
   };
 });
 
-export const StyledIconWrapper = styled(Box)(({ theme }) => ({
-  border: `1px solid ${theme.palette.border.secondary}`,
+export const StyledIconWrapper = styled('div')(({ theme, disabled, isActive }) => ({
+  border: `1px solid ${isActive ? theme.palette.border.main : theme.palette.border.secondary}`,
   height: '24px',
   width: '24px',
   color: theme.palette.text.primary,
@@ -44,8 +43,12 @@ export const StyledIconWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '4px',
-  '&:hover': {
-    cursor: 'pointer',
-    border: `1px solid ${theme.palette.border.main}`,
-  },
+  opacity: disabled ? 0.5 : 1,
+  cursor: isActive ? 'initial' : 'pointer',
+  '&:hover': !disabled
+    ? {
+      border: `1px solid ${theme.palette.border.main}`,
+    } : {
+      cursor: 'not-allowed',
+    },
 }));

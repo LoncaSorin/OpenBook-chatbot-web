@@ -1,19 +1,28 @@
 import React from 'react';
-import { Box, ThemeProvider } from '@mui/material';
+import { Box } from '@mui/material';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 import './App.css';
-import ChatContainer from './containers/ChatContainer';
-import getAppTheme from './assets/themes/defaultTheme';
-import ArtefactDialogContainer from './containers/ArtefactDialogContainer';
+import { BrowserRouter } from 'react-router-dom';
+
+import AppData from './AppData';
 
 function App() {
   return (
-    <ThemeProvider theme={getAppTheme()}>
+    <BrowserRouter>
       <Box className="App">
-        <ArtefactDialogContainer />
-        <ChatContainer />
+        <AppData />
+        <ToastContainer
+          position="top-right"
+          autoClose={700}
+          closeOnClick
+          pauseOnHover
+          hideProgressBar
+          theme="light"
+        />
       </Box>
-    </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

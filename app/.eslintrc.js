@@ -22,13 +22,12 @@ module.exports = {
     'import/resolver': {
       alias: {
         map: [
-          ['components', './app/components/'],
-          ['containers', './app/containers/'],
-          ['fields', './app/fields/'],
-          ['layouts', './app/layouts/'],
-          ['services', './app/services/'],
-          ['constants', './app/constants/'],
-          ['utils', './app/utils/'],
+          ['components', './src/components/'],
+          ['containers', './src/containers/'],
+          ['assets', './src/assets/'],
+          ['services', './src/services/'],
+          ['constants', './src/constants/'],
+          ['utils', './src/utils/'],
         ],
         extensions: ['.js', '.jsx'],
       },
@@ -56,12 +55,10 @@ module.exports = {
         newlinesBetween: 'always', // new line between groups
         groups: [
           'module',
-          '/^(components|containers|layouts|fields|widgets'
-            + '|modules\\/[a-zA-Z-]*$|modules\\/[a-zA-Z-]*\\/(?!constants|utils))/',
-          '/^(services|hooks|actions|middlewares'
-            + '|reducers\\/(?!namespaces|index|actionTypes))/',
-          '/^(utils|constants|modules\\/[a-zA-Z-]*\\/(constants|utils)'
-            + '|reducers\\/(namespaces|index|actionTypes))/',
+          '/^(components|containers|context|routes)/',
+          '/^(services|hooks)/',
+          '/^(utils|constants|types|config|validation)/',
+          '/^(assets)/',
         ],
       },
     ],

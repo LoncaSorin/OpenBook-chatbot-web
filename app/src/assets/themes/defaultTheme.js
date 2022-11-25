@@ -19,7 +19,8 @@ const getAppTheme = () => {
         styleOverrides: {
           root: {
             fontSize: '14px',
-            color: palette.text.secondary,
+            color: palette.text.primary,
+            backgroundColor: palette.secondary.main,
           },
         },
       },
